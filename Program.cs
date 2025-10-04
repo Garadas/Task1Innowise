@@ -1,12 +1,10 @@
 ﻿using System;
 
-Console.Title = "Калькулятор";
-
 while (true)
 {
     try
     {
-        //блок запросов ввода
+
         Console.WriteLine("Введите первое число:");
         int a = int.Parse(Console.ReadLine());
         Console.WriteLine("Выберите арифметическую опреацию + - * /");
@@ -14,7 +12,6 @@ while (true)
         Console.WriteLine("Введите второе число:");
         int b = int.Parse(Console.ReadLine());
 
-        //выполнение операции
         switch (o)
         {
             case '+':
@@ -29,11 +26,10 @@ while (true)
             case '-':
                 Console.WriteLine($"результат {a}{o}{b} = {a - b}");
                 break;
-            default: throw new Exception("Выбран неверный знак операции");//исключение неверного знака операции
+            default: throw new Exception("Выбран неверный знак операции");
         }
     }
 
-    // блок обработки исключений
     catch (FormatException)
     {
         Console.WriteLine("Ошибка: Введены некорректные данные!");
@@ -47,7 +43,6 @@ while (true)
         Console.WriteLine(ex.Message);
     }
 
-    //повторный запуск
     Console.WriteLine("Нажмите пробел/spacebar если желаете продолжить.");
     Console.WriteLine("Или любую другую клавишу для завершения.");
     if (Console.ReadKey().Key != ConsoleKey.Spacebar) break;
