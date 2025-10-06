@@ -4,31 +4,44 @@ while (true)
 {
     try
     {
+        double a, b;
+        char o;
+
+        double EnterNumber()
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (double.TryParse(input, out double chislo))
+                {
+                    return chislo;
+                }
+                Console.WriteLine("Ошибка: Введено некорректное число! Попробуйте еще раз.");
+            }
+        }
+
+        char EnterOperation()
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (!string.IsNullOrEmpty(input) && input.Length == 1 && "+-*/".Contains(input[0]))
+                {
+                    return input[0];
+                }
+                Console.WriteLine("Ошибка: Операция должна быть одним из символов + - * /");
+            }
+        }
 
         Console.WriteLine("Введите первое число:");
-        string inputa = Console.ReadLine();
-        if (!double.TryParse(inputa, out double a))
-        {
-            Console.WriteLine("Ошибка: Введено некорректное число!");
-            continue;
-        }
+        a = EnterNumber();
 
         Console.WriteLine("Выберите арифметическую опреацию + - * /");
-        string inputo = Console.ReadLine();
-        if (string.IsNullOrEmpty(inputo) || inputo.Length != 1|| !"+-*/".Contains(inputo[0]))
-        {
-            Console.WriteLine("Ошибка: Операция должна быть одним из символов + - * /");
-            continue;
-        }
-        char o = inputo[0];
+        o = EnterOperation();
 
         Console.WriteLine("Введите второе число:");
-        string inputb = Console.ReadLine();
-        if (!double.TryParse(inputb, out double b))
-        {
-            Console.WriteLine("Ошибка: Введено некорректное число!");
-            continue;
-        }
+        b = EnterNumber();
+
         double result = o switch
         {
             '+'=>a+b,
