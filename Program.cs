@@ -12,9 +12,9 @@ while (true)
             while (true)
             {
                 string input = Console.ReadLine();
-                if (double.TryParse(input, out double chislo))
+                if (double.TryParse(input, out double number))
                 {
-                    return chislo;
+                    return number;
                 }
                 Console.WriteLine("Ошибка: Введено некорректное число! Попробуйте еще раз.");
             }
